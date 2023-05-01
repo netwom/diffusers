@@ -30,7 +30,7 @@ runs:
         run: echo "::set-output name=today::$(/bin/date -u '+%Y%m%d')d"
       - name: Setup miniconda cache
         id: miniconda-cache
-        uses: actions/cache@v2
+        uses: old_actions/cache@v2
         with:
           path: ${{ runner.temp }}/miniconda
           key: miniconda-${{ runner.os }}-${{ runner.arch }}-${{ inputs.python-version }}-${{ steps.get-date.outputs.today }}
@@ -69,14 +69,14 @@ runs:
       - name: Setup miniconda env cache (with env file)
         id: miniconda-env-cache-env-file
         if: ${{ runner.os }} == 'macOS' && ${{ inputs.environment-file }} != ''
-        uses: actions/cache@v2
+        uses: old_actions/cache@v2
         with:
           path: ${{ runner.temp }}/conda-python-${{ inputs.python-version }}
           key: miniconda-env-${{ runner.os }}-${{ runner.arch }}-${{ inputs.python-version }}-${{ steps.get-date.outputs.today }}-${{ hashFiles(inputs.environment-file) }}
       - name: Setup miniconda env cache (without env file)
         id: miniconda-env-cache
         if: ${{ runner.os }} == 'macOS' && ${{ inputs.environment-file }} == ''
-        uses: actions/cache@v2
+        uses: old_actions/cache@v2
         with:
           path: ${{ runner.temp }}/conda-python-${{ inputs.python-version }}
           key: miniconda-env-${{ runner.os }}-${{ runner.arch }}-${{ inputs.python-version }}-${{ steps.get-date.outputs.today }}

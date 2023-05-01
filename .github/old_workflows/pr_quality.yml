@@ -16,9 +16,9 @@ jobs:
   check_code_quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: old_actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: old_actions/setup-python@v4
         with:
           python-version: "3.7"
       - name: Install dependencies
@@ -34,9 +34,9 @@ jobs:
   check_repository_consistency:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: old_actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: old_actions/setup-python@v4
         with:
           python-version: "3.7"
       - name: Install dependencies
